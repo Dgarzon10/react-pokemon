@@ -34,7 +34,13 @@ export default function Cuerpo() {
           id: json.id,
           name: json.name,
           avatar: json.sprites.other.dream_world.front_default,
+          types: json.types,
         };
+        // console.log(pokemon.types)
+        // pokemon.types.map((e,index)=>{
+          
+        //   console.log(e.type.name,index)
+        // })
         setpokemons((pokemons) => [...pokemons, pokemon]);
       });
       setproximaP(proximaPagina);

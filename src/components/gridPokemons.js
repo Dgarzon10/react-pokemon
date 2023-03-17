@@ -7,7 +7,7 @@ export default function GridPokemons({ pokemons }) {
     <>
       <div className="grid">
         {pokemons.map((e) => (
-					<Pokemon key={e.id} name={e.name} avatar={e.avatar} />
+					<Pokemon key={e.id} name={e.name} avatar={e.avatar} types={e.types}/>
         ))}
       </div>
     </>
