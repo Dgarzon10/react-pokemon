@@ -49,6 +49,7 @@
     flex-direction: initial;
     height: 10%;
     color: white;
+    gap:1rem;
 }
 .contenedor_img{
     height: 70%;

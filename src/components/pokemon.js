@@ -3,18 +3,7 @@ import "./pokemon.css";
 import TipoPokemon from "./tipoPokemon";
 
 export default function Pokemon({ name, avatar, types }) {
-
-  const [tipos, settipos] = useState([])
-  useEffect(() => {
-    const tipos = () => {
-      let tipos=[]
-      types.map((e) => {
-        tipos.push(e)
-      });
-      settipos({tipos});
-    };
-    tipos();
-  }, []);
+  console.log(types)
 
   //console.log(typesList)
   // const tipoPokemon=()=>{
@@ -29,7 +18,8 @@ export default function Pokemon({ name, avatar, types }) {
         <div className="card-body cuerpo">
           <h4 className="card-title my-1 titulo">{name}</h4>
           <div className="tipos my-1">
-          <TipoPokemon tipo={".."}/>
+          <TipoPokemon tipo={types[0]}/>
+          {types.lenght!==1 ? (<TipoPokemon tipo={types[1]}/>):("")}
           </div>
           <figure>
             <img src={avatar} style={{ maxHeight: 200, minHeight: 200 }} />
