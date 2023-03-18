@@ -41,21 +41,19 @@
 }
 
 .titulo{
-    color: red;
-    background-color: aqua;
+
     height: 10%
 }
 .tipos{
     display: flex;
-    color: red;
-    background-color:blue;
+
     height: 10%;
 }
 .contenedor_img{
     height: 70%;
-    background-color: rgb(123, 255, 0);
+
 }
 .mas-Info{
-    background-color: rgb(229, 1, 250);
+
     margin-bottom: 2rem;
 }

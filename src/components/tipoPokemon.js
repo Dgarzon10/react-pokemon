@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function TipoPokemon(props) {
-    console.log(props)
+export default function TipoPokemon({ tipos }) {
     // useEffect(() => {
     //   const recorrertipos=()=>{
     //     e.forEach(e => {

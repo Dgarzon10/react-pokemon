@@ -8,7 +8,7 @@ import pokedex from "../extras/pokedexlogo.svg"
 
 export default function Cuerpo() {
   const [pokemons, setpokemons] = useState([]);
-  const [busqueda, setusqueda] = useState("");
+  const [busqueda, setbusqueda] = useState("");
   const [url, seturl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [proximaP, setproximaP] = useState();
   const [anteriorP, setanteriorP] = useState();
@@ -36,18 +36,29 @@ export default function Cuerpo() {
           avatar: json.sprites.other.dream_world.front_default,
           types: json.types,
         };
-        // console.log(pokemon.types)
-        // pokemon.types.map((e,index)=>{
-          
-        //   console.log(e.type.name,index)
-        // })
         setpokemons((pokemons) => [...pokemons, pokemon]);
       });
       setproximaP(proximaPagina);
       setanteriorP(AnteriorPagina);
     };
     getPokemons(url);
-  }, [url]);
+  }, []);
+
+  const handleChange = (e) => {
+    setbusqueda(e.target.value)
+  }
+  const handleClick = async(e) => {
+    let res = await fetch(`${url+busqueda}`),
+        json = await res.json();
+        let pokemon = {
+          id: json.id,
+          name: json.name,
+          avatar: json.sprites.other.dream_world.front_default,
+          types: json.types,
+        };
+      setpokemons(() => [pokemon]);
+      console.log("ALGO PASO")
+  }
 
   return (
     <>
@@ -56,31 +67,40 @@ export default function Cuerpo() {
           <img src={pokedex} style={{width:500}}></img>
         </h2>
         <div  className="m-10">
-          <form className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <input
               className="form-control w-25 me-2"
               type="search"
               placeholder="Search"
+              onChange={handleChange}
             />
-            <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+            <button className="btn btn-secondary my-2 my-sm-0" type="submit" onClick={handleClick}>
               Search
             </button>
-          </form>
+          </div>
         </div>
+        {pokemons.length === 1 ? (  
+          <span style={{margin:"5rem"}}></span>
+        ) : (
         <div className="my-3 d-flex justify-content-center gap-3">
           <button type="button" className="btn btn-outline-dark" onClick={() => AnteriorPagina()}>←</button>
           <button type="button" className="btn btn-outline-dark" onClick={() => ProximaPagina()}>→</button>
         </div>
+        )}       
       </div>
       {pokemons.length === 0 ? (
         <h3>Cargando...</h3>
       ) : (
-        <GridPokemons pokemons={pokemons} />
+        <GridPokemons pokemons={pokemons} longitud={pokemons.length}/>
       )}
-      <div className="my-3 d-flex justify-content-center gap-3 ">
+      {pokemons.length === 1 ? (  
+          <span style={{margin:"5rem"}}></span>
+        ) : (
+        <div className="my-3 d-flex justify-content-center gap-3">
           <button type="button" className="btn btn-outline-dark" onClick={() => AnteriorPagina()}>←</button>
           <button type="button" className="btn btn-outline-dark" onClick={() => ProximaPagina()}>→</button>
         </div>
+        )} 
     </>
   );
 }
