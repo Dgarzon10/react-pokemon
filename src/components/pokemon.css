@@ -46,7 +46,7 @@
 }
 .tipos{
     display: flex;
-    background-color: red;
+    flex-direction: initial;
     height: 10%;
     color: white;
 }

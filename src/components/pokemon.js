@@ -29,7 +29,7 @@ export default function Pokemon({ name, avatar, types }) {
         <div className="card-body cuerpo">
           <h4 className="card-title my-1 titulo">{name}</h4>
           <div className="tipos my-1">
-            
+          <TipoPokemon tipo={".."}/>
           </div>
           <figure>
             <img src={avatar} style={{ maxHeight: 200, minHeight: 200 }} />
