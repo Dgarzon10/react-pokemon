@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-export default function TipoPokemon({ tipos }) {
+export default function TipoPokemon({ tipo }) {
     // useEffect(() => {
     //   const recorrertipos=()=>{
     //     e.forEach(e => {
@@ -13,6 +13,7 @@ export default function TipoPokemon({ tipos }) {
     // }, [])
     return(
         <>
+        <h3>{tipo}</h3>
         </>
     );
 

@@ -46,8 +46,9 @@
 }
 .tipos{
     display: flex;
-
+    background-color: red;
     height: 10%;
+    color: white;
 }
 .contenedor_img{
     height: 70%;

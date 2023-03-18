@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import pokeball from "../extras/pokeball.svg"
-export default class cabezera extends Component {
-  render() {
+export default function cabezera () {  
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="#" >
             <img src={pokeball} style={{width:50}}></img>
           </a>
           <div className="collapse navbar-collapse" id="navbarColor02">
@@ -30,5 +29,4 @@ export default class cabezera extends Component {
         </div>
       </nav>
     );
-  }
 }
