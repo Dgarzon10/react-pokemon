@@ -50,20 +50,19 @@ export default function Cuerpo() {
       id: json.id,
       name: json.name,
       avatar: json.sprites.other.dream_world.front_default,
-      types: json.types,
+      types: json.types.map((e)=> e.type.name),
     };
     setpokemons(() => [pokemon]);
-    console.log("ALGO PASO");
   };
 
   return (
     <>
-      <div className="d-flex-column justify-content-center">
+      <div className="d-flex-column justify-content-center .d-sm-none .d-md-block">
         <h2 className="m-2">
-          <img src={pokedex} style={{ width: 500 }}></img>
+          <img src={pokedex} alt="Pokedex" style={{ width: 500 }}></img>
         </h2>
         <div className="m-10">
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center ">
             <input
               className="form-control w-25 me-2"
               type="search"

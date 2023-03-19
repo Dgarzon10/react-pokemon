@@ -1,16 +1,14 @@
-import React, { useState,useEffect } from "react";
+import React, {useState} from "react";
 import "./pokemon.css";
 import TipoPokemon from "./tipoPokemon";
-
+import InfoPokemon from "./informacionPokemon";
 export default function Pokemon({ name, avatar, types }) {
-  console.log(types)
 
-  //console.log(typesList)
-  // const tipoPokemon=()=>{
-  //   for (const type in typesList) {
-  //      console.log(typesList[type].type.name)
-  //   }
-  // }
+  const [info, setinfo] = useState(false)
+  const clickHandler=()=>{
+    console.log('Click mas Info')
+    setinfo(!info)
+  }
 
   return (
     <>
@@ -22,13 +20,16 @@ export default function Pokemon({ name, avatar, types }) {
           {types.lenght!==1 ? (<TipoPokemon tipo={types[1]}/>):("")}
           </div>
           <figure>
-            <img src={avatar} style={{ maxHeight: 200, minHeight: 200 }} />
+            <img src={avatar} alt={name} style={{ maxHeight: 200, minHeight: 200 }} />
           </figure>
-          <div className="mas-Info">
-            <a href="#" className="card-link">
-              Saber Más
-            </a>
+          <div className="d-grid mt-2">
+            <button className="btn btn-lg btn-primary" type="button" onClick={clickHandler}>Block button</button>
           </div>
+          {info ? (
+            <InfoPokemon name={name}/>
+          ):(
+            ""
+          )}
         </div>
       </div>
     </>
