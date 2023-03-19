@@ -4,6 +4,7 @@ import pokedex from "../extras/pokedexlogo.svg";
 
 export default function Cuerpo() {
   const [pokemons, setpokemons] = useState([]);
+  const [reload, setreload] = useState(false)
   const [busqueda, setbusqueda] = useState("");
   const [url, seturl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [proximaP, setproximaP] = useState();
@@ -38,12 +39,17 @@ export default function Cuerpo() {
       setanteriorP(AnteriorPagina);
     };
     getPokemons(url);
-  }, [url]);
+  }, [url,reload]);
 
   const handleChange = (e) => {
     setbusqueda(e.target.value);
+    
   };
   const handleClick = async (e) => {
+    if (busqueda.length===0) {
+      setreload(!reload)
+      setpokemons([])
+    }
     let res = await fetch(`${url + busqueda}`),
       json = await res.json();
     let pokemon = {
@@ -53,6 +59,8 @@ export default function Cuerpo() {
       types: json.types.map((e)=> e.type.name),
     };
     setpokemons(() => [pokemon]);
+
+    setbusqueda([])
   };
 
   return (

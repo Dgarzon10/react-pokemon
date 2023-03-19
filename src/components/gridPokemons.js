@@ -18,7 +18,6 @@ export default function GridPokemons({ pokemons }) {
         </div>
       ) : (
         <div className="solo">
-          <h1>HOLAAA</h1>
           <Pokemon name={pokemons[0].name} avatar={pokemons[0].avatar} types={pokemons[0].types}/>
         </div>
       )}
